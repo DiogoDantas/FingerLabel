@@ -1,0 +1,5 @@
+root = True
+
+[*]
+
+charset = utf-8
