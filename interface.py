@@ -68,19 +68,19 @@ class Application:
 		self.btnW['command'] = self.type_W
 		self.btnW.grid(row=0, column=5, padx=5, pady=10)
 
-		self.label_count_A = Label(self.container_2, text=self.count_A, font=self.font)
+		self.label_count_A = Label(self.container_2, textvariable=self.count_A, font=self.font)
 		self.label_count_A.grid(row=1, column=1, padx=10)
 
-		self.label_count_T = Label(self.container_2, text=self.count_T, font=self.font)
+		self.label_count_T = Label(self.container_2, textvariable=self.count_T, font=self.font)
 		self.label_count_T.grid(row=1, column=2, padx=10)
 
-		self.label_count_L = Label(self.container_2, text=self.count_L, font=self.font)
+		self.label_count_L = Label(self.container_2, textvariable=self.count_L, font=self.font)
 		self.label_count_L.grid(row=1, column=3, padx=10)
 
-		self.label_count_R = Label(self.container_2, text=self.count_R, font=self.font)
+		self.label_count_R = Label(self.container_2, textvariable=self.count_R, font=self.font)
 		self.label_count_R.grid(row=1, column=4, padx=10)
 
-		self.label_count_W = Label(self.container_2, text=self.count_W, font=self.font)
+		self.label_count_W = Label(self.container_2, textvariable=self.count_W, font=self.font)
 		self.label_count_W.grid(row=1, column=5, padx=10)
 
 		self.image = Label(self.container_3)
@@ -149,12 +149,12 @@ class Application:
 		output = os.path.join(self.path_text.get(), 'output')
 		file = self.current_image[self.current_image.rfind('/')+1:]
 		if os.path.exists(output):
-			count = [len(os.listdir(os.path.join(os.path.join(output, fingertype), file))) for fingertype in self.fingertypes]
-			self.count_A.set(count[0])
-			self.count_T.set(count[1])
-			self.count_L.set(count[2])
-			self.count_R.set(count[3])
-			self.count_W.set(count[4])
+			count = [len(os.listdir(os.path.join(os.path.join(output, fingertype)))) for fingertype in self.fingertypes]
+			self.count_A.set(str(count[0]))
+			self.count_T.set(str(count[1]))
+			self.count_L.set(str(count[2]))
+			self.count_R.set(str(count[3]))
+			self.count_W.set(str(count[4]))
 
 
 
