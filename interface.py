@@ -122,15 +122,16 @@ class Application:
 	def open(self):
 		self.listbox.delete(0, END)
 		folder = filedialog.askdirectory(initialdir='Documents', title='Select a Directory')
-		self.output_path = os.path.join(folder, 'output')
+		self.output_path = os.path.join(folder, folder[folder.rfind('/')+1:])
+		directory = folder[folder.rfind('/')+1:]
 		self.files = [folder + '/' + file for file in os.listdir(folder) if os.path.isfile(os.path.join(folder, file))]
 		self.path_text.set(str(folder))
-		if not os.path.exists(os.path.join(folder, 'output')):
-			os.makedirs(os.path.join(folder, 'output/A'))
-			os.mkdir(os.path.join(folder, 'output/T'))
-			os.mkdir(os.path.join(folder, 'output/L'))
-			os.mkdir(os.path.join(folder, 'output/R'))
-			os.mkdir(os.path.join(folder, 'output/W'))
+		if not os.path.exists(os.path.join(folder, directory)):
+			os.makedirs(os.path.join(folder, os.path.join(directory, 'A')))
+			os.mkdir(os.path.join(folder, os.path.join(directory, 'T')))
+			os.mkdir(os.path.join(folder, os.path.join(directory, 'L')))
+			os.mkdir(os.path.join(folder, os.path.join(directory, 'R')))
+			os.mkdir(os.path.join(folder, os.path.join(directory, 'W')))
 		for file in self.files:
 			self.listbox.insert(END, file[file.rfind('/')+1:])
 
